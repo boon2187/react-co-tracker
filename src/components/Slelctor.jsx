@@ -1,8 +1,10 @@
 // Selector.jsx
 
+import {useState} from 'react';
 import countriesJson from '../countries.json';
 
 const Selector = () => {
+    const [country, setCountry] = useState("");
     return (
         <div>
             <select>
