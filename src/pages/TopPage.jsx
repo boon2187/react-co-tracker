@@ -1,6 +1,6 @@
 // TopPage.jsx
 
-import Selector from "../components/Slelctor";
+import Selector from "../components/Selctor";
 import Title from "../components/Title";
 
 const TopPage = () => {
