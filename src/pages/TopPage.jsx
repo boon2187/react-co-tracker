@@ -1,11 +1,13 @@
 // TopPage.jsx
 
+import Selector from "../components/Slelctor";
 import Title from "../components/Title";
 
 const TopPage = () => {
     return (
         <div>
             <Title />
+            <Selector />
         </div>
       );
 };
