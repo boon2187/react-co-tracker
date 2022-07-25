@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div>
-      <TopPage />    
+      <TopPage countriesJson={countriesJson} setCountry={setCountry} getCountryData={getCountryData} />    
     </div>
   )
 }
