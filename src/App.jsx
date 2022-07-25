@@ -1,5 +1,7 @@
 import './App.css'
 import TopPage from './pages/TopPage'
+import {useState} from 'react';
+import countriesJson from './countries.json';
 
 function App() {
   // Selctorコンポーネントで選ばれた国のデータを受け取るためのstate
