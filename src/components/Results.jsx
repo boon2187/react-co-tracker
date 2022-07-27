@@ -1,6 +1,7 @@
 // Results.jsx
 
-const Results = () => {
+const Results = (props) => {
+    console.log("ResultsのProps", props)
     return (
         <div>
             <p>日付：</p>
