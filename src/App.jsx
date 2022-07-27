@@ -17,7 +17,13 @@ function App() {
 
   // その国データを受け取る  
   const getCountryData = () => {
-      fetch(`https://monotein-books.vercel.app/api/corona-tracker/country/${country}`).then(res => res.json()).then(data => { setCountryData(); });
+      fetch(`https://monotein-books.vercel.app/api/corona-tracker/country/${country}`).then(res => res.json()).then(data => { setCountryData({
+        date: data[data.length -1].Date,
+        newConfirmed: data[data.length -1].Confrimed - data[data.length -2].Confrimed,
+        totalConfirmed: data[data.length -1].Confrimed,
+        newRecovered: data[data.length -1].Recovered - data[data.length -2].Recovered,
+        totalRecovered: data[data.length -1].Recovered,
+      }); });
   }
 
   return (
