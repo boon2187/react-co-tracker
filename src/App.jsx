@@ -1,5 +1,6 @@
 import './App.css'
 import TopPage from './pages/TopPage'
+import WorldPage from './pages/WorldPage';
 import {useState} from 'react';
 import {Route, Routes, BrowserRouter} from 'react-router-dom';
 import countriesJson from './countries.json';
@@ -33,7 +34,7 @@ function App() {
       <Routes>
         <Route path="/" element={<TopPage countriesJson={countriesJson} setCountry={setCountry}  getCountryData={getCountryData} countryData={countryData} />} />
         <Route path="/world" element={
-          <p>ワールド</p>
+          <WorldPage />
         } />
       </Routes>
     </BrowserRouter>
