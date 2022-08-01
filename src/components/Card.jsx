@@ -2,7 +2,7 @@
 
 const Card = () => {
     // 全世界のデータを取得する
-    const getAllcountriesData = () => {
+    const getAllCountriesData = () => {
         fetch("https://monotein-books.vercel.app/api/corona-tracker/summary")
             .then(res => res.json())
             .then(data => console.log(data))
@@ -11,7 +11,7 @@ const Card = () => {
     return(
         <div>
             <h2>Card</h2>
-            <button onClick={getAllcountriesData}>Get All Data</button>
+            <button onClick={getAllCountriesData}>Get All Data</button>
         </div>
     );
 };
