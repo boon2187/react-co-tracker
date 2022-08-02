@@ -5,7 +5,7 @@ const Card = () => {
     const getAllCountriesData = () => {
         fetch("https://monotein-books.vercel.app/api/corona-tracker/summary")
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => console.log(data.Countries))
     }
 
     return(
