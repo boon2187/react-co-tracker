@@ -14,6 +14,7 @@ const Card = () => {
 
     return(
         <div>
+            {console.log(allCountriesData)}
             <h2>Card</h2>
             <button onClick={getAllCountriesData}>Get All Data</button>
         </div>
