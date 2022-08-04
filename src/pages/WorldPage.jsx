@@ -1,10 +1,10 @@
 // WorldPage.jsx
 import Card from "../components/Card"   
 
-const WorldPage = () => {
+const WorldPage = (props) => {
     return(
         <div>
-            <Card />
+            <Card getAllCountriesData={props.getAllCountriesData} allCountriesData={props.allCountriesData} />
         </div>
     );
 };
