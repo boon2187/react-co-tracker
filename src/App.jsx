@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Route, Routes, BrowserRouter} from 'react-router-dom';
 import countriesJson from './countries.json';
 import TopPage from './pages/TopPage'
@@ -33,20 +33,21 @@ function App() {
       }); 
     });
   }
-
-  // 全世界のデータを取得する
-  const getAllCountriesData = () => {
+  
+  // useEffectを使って、ページ読み込み時に発火！！
+  useEffect(() => {
+    // 全世界のデータを取得する
     fetch("https://monotein-books.vercel.app/api/corona-tracker/summary")
     .then(res => res.json())
-    .then(data => setAllCountriesData(data.Countries))
-  }
+    .then(data => setAllCountriesData(data.Countries)) 
+  }, []);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<TopPage countriesJson={countriesJson} setCountry={setCountry}  getCountryData={getCountryData} countryData={countryData} />} />
         <Route path="/world" element={
-          <WorldPage allCountriesData={allCountriesData} getAllCountriesData={getAllCountriesData}/>
+          <WorldPage allCountriesData={allCountriesData} />
         } />
       </Routes>
     </BrowserRouter>
