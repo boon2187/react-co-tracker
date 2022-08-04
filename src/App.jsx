@@ -31,7 +31,7 @@ function App() {
         newRecovered: data[data.length -1].Recovered - data[data.length -2].Recovered,
         totalRecovered: data[data.length -1].Recovered,
       }); 
-    });
+    }).catch(err => alert("エラーが発生しました。ページをリロードして、もう一度トライしてください。"))
   }
   
   // useEffectを使って、ページ読み込み時に発火！！
@@ -39,7 +39,8 @@ function App() {
     // 全世界のデータを取得する
     fetch("https://monotein-books.vercel.app/api/corona-tracker/summary")
     .then(res => res.json())
-    .then(data => setAllCountriesData(data.Countries)) 
+    .then(data => setAllCountriesData(data.Countries))
+    .catch(err => alert("エラーが発生しました。もう一度リロードしてください。"))
   }, []);
 
   return (
