@@ -7,7 +7,7 @@ import './App.css'
 
 function App() {
   // Selctorコンポーネントで選ばれた国のデータを受け取るためのstate
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState("japan");
   // その国のデータを受け取るStateを作る
   const [countryData, setCountryData] = useState({
     date: "",
@@ -23,27 +23,34 @@ function App() {
   // 通信中かどうかの状態を保存しておくstate
   const [loading, setLoading] = useState(false);
 
-  // その国データを受け取る  
-  const getCountryData = () => {
-    // 通信中に設定
-    setLoading(true);
+  
+  // useEffectを使って、国名を選んだだけで、データを取得できるようにする
+  useEffect(() => {
+    // その国データを受け取る  
+    const getCountryData = () => {
+      // 通信中に設定
+      setLoading(true);
+  
+      // 指定された国のデータを取得
+      fetch(`https://monotein-books.vercel.app/api/corona-tracker/country/${country}`)
+      .then(res => res.json())
+      .then(data => { 
+        setCountryData({
+          date: data[data.length -1].Date,
+          newConfirmed: data[data.length -1].Confirmed - data[data.length -2].Confirmed,
+          totalConfirmed: data[data.length -1].Confirmed,
+          newRecovered: data[data.length -1].Recovered - data[data.length -2].Recovered,
+          totalRecovered: data[data.length -1].Recovered,
+        }); 
+  
+        // 通信中であることを解除
+        setLoading(false);
+      })
+      .catch(err => alert("エラーが発生しました。ページをリロードして、もう一度トライしてください。"));
+    }
+    getCountryData();
+  }, [country])
 
-    // 指定された国のデータを取得
-    fetch(`https://monotein-books.vercel.app/api/corona-tracker/country/${country}`)
-    .then(res => res.json())
-    .then(data => { 
-      setCountryData({
-        date: data[data.length -1].Date,
-        newConfirmed: data[data.length -1].Confirmed - data[data.length -2].Confirmed,
-        totalConfirmed: data[data.length -1].Confirmed,
-        newRecovered: data[data.length -1].Recovered - data[data.length -2].Recovered,
-        totalRecovered: data[data.length -1].Recovered,
-      }); 
-
-      // 通信中であることを解除
-      setLoading(false);
-    }).catch(err => alert("エラーが発生しました。ページをリロードして、もう一度トライしてください。"))
-  }
   
   // useEffectを使って、ページ読み込み時に発火！！
   useEffect(() => {
@@ -57,7 +64,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<TopPage countriesJson={countriesJson} setCountry={setCountry}  getCountryData={getCountryData} countryData={countryData} loading={loading}  />} />
+        <Route path="/" element={<TopPage countriesJson={countriesJson} setCountry={setCountry}  countryData={countryData} loading={loading}  />} />
         <Route path="/world" element={
           <WorldPage allCountriesData={allCountriesData} />
         } />
