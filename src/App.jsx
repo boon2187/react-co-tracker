@@ -20,6 +20,9 @@ function App() {
   // 全世界のデータを受け取るstateを設定
   const [allCountriesData, setAllCountriesData] = useState([]);
 
+  // 通信中かどうかの状態を保存しておくstate
+  const [loading, setLoading] = useState(false);
+
   // その国データを受け取る  
   const getCountryData = () => {
     fetch(`https://monotein-books.vercel.app/api/corona-tracker/country/${country}`)
