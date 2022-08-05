@@ -45,9 +45,11 @@ function App() {
   
         // 通信中であることを解除
         setLoading(false);
-      }).catch(err => alert("エラーが発生しました。ページをリロードして、もう一度トライしてください。"))
+      })
+      .catch(err => alert("エラーが発生しました。ページをリロードして、もう一度トライしてください。"))
     }
-  })
+    getCountryData();
+  }, [])
 
   
   // useEffectを使って、ページ読み込み時に発火！！
