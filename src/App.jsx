@@ -57,7 +57,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<TopPage countriesJson={countriesJson} setCountry={setCountry}  getCountryData={getCountryData} countryData={countryData} />} />
+        <Route path="/" element={<TopPage countriesJson={countriesJson} setCountry={setCountry}  getCountryData={getCountryData} countryData={countryData} loading={loading}  />} />
         <Route path="/world" element={
           <WorldPage allCountriesData={allCountriesData} />
         } />

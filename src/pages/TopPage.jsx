@@ -14,7 +14,7 @@ const TopPage = (props) => {
                 <Header />
                 <Title />
                 <Selector countriesJson={props.countriesJson} setCountry={props.setCountry} getCountryData={props.getCountryData} />
-                <Results countryData={props.countryData} />
+                <Results countryData={props.countryData} loading={props.loading} />
             </div>
         </div>
       );
