@@ -44,6 +44,12 @@ function App() {
       setLoading(false);
     }).catch(err => alert("エラーが発生しました。ページをリロードして、もう一度トライしてください。"))
   }
+
+  // useEffectを使って、国名を選んだだけで、データを取得できるようにする
+  useEffect(() => {
+    
+  })
+
   
   // useEffectを使って、ページ読み込み時に発火！！
   useEffect(() => {
