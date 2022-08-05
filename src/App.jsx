@@ -7,7 +7,7 @@ import './App.css'
 
 function App() {
   // Selctorコンポーネントで選ばれた国のデータを受け取るためのstate
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState("japan");
   // その国のデータを受け取るStateを作る
   const [countryData, setCountryData] = useState({
     date: "",
@@ -46,10 +46,10 @@ function App() {
         // 通信中であることを解除
         setLoading(false);
       })
-      .catch(err => alert("エラーが発生しました。ページをリロードして、もう一度トライしてください。"))
+      .catch(err => alert("エラーが発生しました。ページをリロードして、もう一度トライしてください。"));
     }
     getCountryData();
-  }, [])
+  }, [country])
 
   
   // useEffectを使って、ページ読み込み時に発火！！
@@ -64,7 +64,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<TopPage countriesJson={countriesJson} setCountry={setCountry}  getCountryData={getCountryData} countryData={countryData} loading={loading}  />} />
+        <Route path="/" element={<TopPage countriesJson={countriesJson} setCountry={setCountry}  countryData={countryData} loading={loading}  />} />
         <Route path="/world" element={
           <WorldPage allCountriesData={allCountriesData} />
         } />
